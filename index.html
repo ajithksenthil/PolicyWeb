@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-content"></div>
+        <form id="chat-form">
+            <input type="text" name="user_input" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#chat-form").submit(function(event) {
+                event.preventDefault();
+
+                let user_input = $("input[name='user_input']").val();
+                if (user_input.trim()) {
+                    $("#chat-content").append(`<p><strong>You:</strong> ${user_input}</p>`);
+                    $("input[name='user_input']").val("");
+
+                    $.post("/chat", { user_input: user_input }, function(data) {
+                        let response = data.response;
+                        $("#chat-content").append(`<p><strong>AI:</strong> ${response}</p>`);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
