@@ -193,3 +193,73 @@ Recommendations:
 
 with open("analysis_report.txt", "w") as f:
     f.write(report)
+
+
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+
+# Create a PDF document
+doc = SimpleDocTemplate("report.pdf", pagesize=letter)
+
+# Define the report content
+content = []
+
+# Define the report styles
+styles = getSampleStyleSheet()
+title_style = styles["Heading1"]
+text_style = styles["BodyText"]
+
+# Add report title
+title = Paragraph("Policy Impact Analysis Report", title_style)
+content.append(title)
+content.append(Spacer(1, 12))
+
+# Add key findings
+findings_title = Paragraph("Key Findings:", title_style)
+content.append(findings_title)
+
+findings = [
+    "Finding 1",
+    "Finding 2",
+    "Finding 3",
+]
+
+for finding in findings:
+    paragraph = Paragraph(finding, text_style)
+    content.append(paragraph)
+
+content.append(Spacer(1, 12))
+
+# Add areas for policy improvement
+improvements_title = Paragraph("Areas for Policy Improvement:", title_style)
+content.append(improvements_title)
+
+improvements = [
+    "Area 1",
+    "Area 2",
+    "Area 3",
+]
+
+for improvement in improvements:
+    paragraph = Paragraph(improvement, text_style)
+    content.append(paragraph)
+
+content.append(Spacer(1, 12))
+
+# Add recommendations
+recommendations_title = Paragraph("Recommendations:", title_style)
+content.append(recommendations_title)
+
+recommendations = [
+    "Recommendation 1",
+    "Recommendation 2",
+    "Recommendation 3",
+]
+
+for recommendation in recommendations:
+    paragraph = Paragraph(recommendation, text_style)
+    content.append(paragraph)
+
+# Build the PDF report
+doc.build(content)
