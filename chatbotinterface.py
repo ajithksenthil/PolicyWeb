@@ -5,15 +5,16 @@
 import os
 import openai
 from flask import Flask, request, jsonify, render_template
-
+import config
 # Replace with your OpenAI API key
-openai.api_key = "your_openai_api_key"
+openai.api_key = config.OPENAI_API_KEY
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return "Chatbot API is up and running!"
+
 
 @app.route('/chat', methods=['POST'])
 def chat():

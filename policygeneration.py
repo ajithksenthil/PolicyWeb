@@ -1,7 +1,8 @@
 import openai
+import config
 
 # Replace with your OpenAI API key
-openai.api_key = "your_openai_api_key"
+openai.api_key = config.OPENAI_API_KEY
 
 def generate_policy_suggestions(user_need, effect_on_need, n_suggestions=3):
     model_engine = "text-davinci-002"

@@ -3,7 +3,7 @@ title: PolicyWeb
 emoji: 
 colorFrom: pink
 colorTo: green
-sdk: gradio
+sdk: react
 sdk_version: 3.20.1
 app_file: 
 pinned: false

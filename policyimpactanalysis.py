@@ -52,7 +52,3 @@ print(f"Predicted Impact: {predicted_impact[0]}")
 # This example demonstrates how to load and preprocess a dataset, train a regression model, evaluate its performance, and predict the impact of a new policy change. Note that this example assumes the availability of a suitable dataset containing historical policy changes and their corresponding impacts on user needs. The model used here is a simple linear regression model, but other more sophisticated models can be used depending on the nature of the data.
 
 
-
-
-# B. Objective: Develop a chatbot interface for AI representative to communicate with US citizens and understand their needs and concerns related to overall wellbeing, and generate a survey based on the conversation.
-
