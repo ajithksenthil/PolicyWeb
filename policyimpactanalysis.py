@@ -77,3 +77,60 @@ plt.show()
 # Sentiment Analysis: Analyze the text data from chat transcripts to understand the overall sentiment of users regarding specific policies, needs, or concerns. This can provide insights into public opinion and highlight areas that require attention.
 # Topic Modeling: Apply natural language processing techniques to extract the main topics and themes discussed in the chat transcripts. This can help identify emerging issues and trends in users' needs and concerns.
 # Predictive Modeling: Use machine learning algorithms to predict future needs, concerns, and policy impacts based on the collected data. This can help inform proactive policy-making and resource allocation.
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Load the dataset
+# Replace 'your_dataset.csv' with your actual dataset file
+data = pd.read_csv("your_dataset.csv")
+
+# Assume columns 'feature_1', 'feature_2', ..., 'feature_n' represent policy change features
+# and 'impact' represents the impact on user needs
+X = data[['feature_1', 'feature_2', ..., 'feature_n']]
+y = data['impact']
+
+# a. Identify key policy changes and their effects on user needs
+# Calculate the correlation matrix between features and impact
+correlations = data.corr()
+
+# Plot the correlation matrix as a heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlations, annot=True, cmap='coolwarm', fmt='.2f')
+plt.title("Correlation matrix of policy changes and user needs")
+plt.show()
+
+# b. Determine the relationship between policy changes and user needs
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predict the impact of policy changes on user needs for the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model performance
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f"Mean Squared Error: {mse}")
+print(f"R2 Score: {r2}")
+
+# c. Perform regression or other statistical analyses to understand the impact of policy changes on user needs
+# Visualize the regression model results by plotting the predicted vs actual impact values
+plt.figure(figsize=(10, 6))
+plt.scatter(y_test, y_pred)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--', lw=2)
+plt.xlabel("Actual Impact")
+plt.ylabel("Predicted Impact")
+plt.title("Actual vs Predicted Impact")
+plt.show()
+
+
+
