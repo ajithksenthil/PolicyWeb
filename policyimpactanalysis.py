@@ -12,6 +12,18 @@ data = pd.read_csv("policy_changes_impacts.csv")
 
 # Assume that columns 'feature_1', 'feature_2', ..., 'feature_n' represent policy change features
 # and 'impact' represents the impact on user needs
+
+
+
+# Policy type: The category or type of policy (e.g., education, healthcare, transportation, etc.)
+# Policy scope: The geographical scope of the policy (local, regional, national, etc.)
+# Policy duration: The length of time the policy has been in effect
+# Policy budget: The financial resources allocated to the policy
+# Policy target group: The specific population segment the policy is targeting (e.g., low-income families, senior citizens, etc.)
+# Policy enforcement: The level of enforcement or compliance with the policy
+# Economic indicators: Relevant economic indicators at the time of policy implementation (e.g., GDP, unemployment rate, inflation, etc.)
+
+
 X = data[['feature_1', 'feature_2', ..., 'feature_n']]
 y = data['impact']
 
@@ -134,3 +146,50 @@ plt.show()
 
 
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load your external data source (e.g., economic indicators, population statistics, or climate data)
+external_data = pd.read_csv("external_data.csv")
+
+# Merge your external data with the user needs and policy impacts data
+combined_data = pd.merge(df, external_data, on="common_key")
+
+# Perform correlation analysis
+correlation_matrix = combined_data.corr()
+
+# Visualize the correlation matrix using a heatmap
+plt.figure(figsize=(12, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm")
+plt.title("Correlation Matrix of User Needs, Policy Impacts, and External Data")
+plt.show()
+
+# Generate visualizations for specific relationships
+plt.scatter(combined_data["external_data_column"], combined_data["user_needs"])
+plt.xlabel("External Data")
+plt.ylabel("User Needs")
+plt.title("Relationship between External Data and User Needs")
+plt.show()
+
+# Summarize key findings and recommendations
+report = """
+Key Findings:
+1. Finding 1
+2. Finding 2
+3. Finding 3
+
+Areas for Policy Improvement:
+1. Area 1
+2. Area 2
+3. Area 3
+
+Recommendations:
+1. Recommendation 1
+2. Recommendation 2
+3. Recommendation 3
+"""
+
+with open("analysis_report.txt", "w") as f:
+    f.write(report)
