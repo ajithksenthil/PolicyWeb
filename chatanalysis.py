@@ -10,7 +10,7 @@ def extract_needs_gpt3(transcripts):
     for transcript in transcripts:
         prompt = f"Extract user needs from the following conversation: {transcript}"
         response = openai.Completion.create(
-            engine="davinci-codex",
+            engine="text-davinci-003",
             prompt=prompt,
             max_tokens=50,
             n=1,
@@ -40,7 +40,7 @@ def generate_survey_gpt3(needs):
     for need in needs:
         prompt = f"Create a survey question that asks the user to rate the effect of {need} on their well-being."
         response = openai.Completion.create(
-            engine="davinci-codex",
+            engine="text-davinci-003",
             prompt=prompt,
             max_tokens=50,
             n=1,

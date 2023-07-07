@@ -1,11 +1,12 @@
 import openai
 import config
 
+# create policy cards
 # Replace with your OpenAI API key
 openai.api_key = config.OPENAI_API_KEY
 
 def generate_policy_suggestions(user_need, effect_on_need, n_suggestions=3):
-    model_engine = "text-davinci-002"
+    model_engine = "text-davinci-003"
     prompt = f"Generate {n_suggestions} potential policy suggestions based on the following user need and its effect: \nUser need: {user_need}\nEffect on need: {effect_on_need}\n\nPolicy suggestions:"
 
     response = openai.Completion.create(
